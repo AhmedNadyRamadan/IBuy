@@ -1,0 +1,7 @@
+  <app-product-card [products]="products" [info]=" prodsInfo"></app-product-card>
+  <div class="d-flex justify-content-center my-3">
+
+    @for (item of pages; track $index) {
+      <button class="btn btn-success mx-1" (click)="handlePagination($index)" [disabled]="disabled[$index]" >{{$index +1}}</button>
+    }
+  </div>

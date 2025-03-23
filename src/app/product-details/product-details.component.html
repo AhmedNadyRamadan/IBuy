@@ -1,0 +1,32 @@
+    <div class="d-flex p-5 align-items">
+        <div class="d-flex gap-3 flex-column justify-content-start">
+            <img  [src]="currentProduct.images[0]" class="card-img-top m-auto border" alt="..." style=" width: 300px; height: 300px;">
+           <div>
+               @for (item of currentProduct.images; track $index) {
+                   <img  [src]="item" class="card-img-top border me-2" alt="..." style=" width: 73px; height: 73px;">
+                }
+            </div>
+        </div>
+        <div class="p-5">
+            @if (currentProduct.stock > 0) {
+                <span class="badge bg-success">In Stock</span>
+            }@else {
+                <span class="badge bg-danger">Out of stock</span>
+            }
+            <h5 class="card-title">{{currentProduct.title}}</h5>
+            <h6 class="card-title text-info">{{currentProduct.category}}</h6>
+           <div>
+            <span>- Rating: </span>
+            @for (item of rating; track $index) {
+                <span><fa-icon [icon]="faStar" class="text-warning"></fa-icon>
+                </span>
+            }
+           </div>
+            <p class="card-text">{{currentProduct.description}}</p>
+            <h4 >Price: {{currentProduct.price | pricePipe }} EGP</h4>
+            <button class="btn btn-primary mx-1" style="width: 30%;" (click)="handleAddToCart(currentProduct.id)">Add to Cart</button>
+            <button class="btn btn-success mx-1" style="width: 30%;">Buy Now</button>
+        </div>
+        <div>
+        </div>
+    </div>

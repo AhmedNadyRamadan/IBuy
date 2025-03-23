@@ -1,0 +1,46 @@
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+  <div class="card shadow p-4" style="width: 400px;">
+    <h2 class="text-center mb-4">Register</h2>
+    <form [formGroup]="form" (ngSubmit)="handleSubmit()">
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" id="username" placeholder="Enter username" formControlName="username" />
+        @if (isSubmit && formCtr['username'].hasError("minlength")) {
+        <small class="text-danger">Username must be at least 6 characters</small>
+        } @else if (isSubmit && formCtr['username'].hasError('required')) {
+        <small class="text-danger">Username is required</small>
+        }
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" formControlName="email" />
+        @if (isSubmit && formCtr['email'].hasError("pattern")) {
+        <small class="text-danger">Invalid email format</small>
+        } @else if (isSubmit && formCtr['email'].hasError('required')) {
+        <small class="text-danger">Email is required</small>
+        }
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Enter password" formControlName="password" />
+        @if (isSubmit && formCtr['password'].hasError("minlength")) {
+        <small class="text-danger">Password must be at least 6 characters</small>
+        } @else if (isSubmit && formCtr['password'].hasError('required')) {
+        <small class="text-danger">Password is required</small>
+        }
+      </div>
+
+      <div class="mb-3">
+        <label for="confirmPassword" class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password" formControlName="confirmPassword" />
+        @if (isSubmit && form.errors?.["passwordMismatch"]) {
+        <small class="text-danger">Passwords do not match</small>
+        }
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Register</button>
+    </form>
+  </div>
+</div>
